@@ -1,0 +1,151 @@
+<script type="text/javascript" src="http://terrynie.com/js/donate.js"></script>
+<!--<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>-->
+<script type="text/javascript" src="http://img.jb51.net/jslib/jquery/jquery-1.3.2.min.js"></script> 
+<link rel="stylesheet" type="text/css" href="http://terrynie.com/css/donate.css"></link>
+{{!< default}}
+{{!-- 顶部图片x --}}
+<div id="post-header" class="site-head regular" {{#if @blog.cover}}style="background-image: url({{@blog.cover}})"{{/if}}  data-stellar-background-ratio="0.5" data-stellar-horizontal-offset="50" data-stellar-vertical-offset="50">
+<div class="post-header-mask"></div>
+<div class="post-cover-info">
+{{#post}}
+<h1 class="post-title"><a href="{{url}}">{{{title}}}</a></h1>
+<h2 class="post-publish-time">{{date format="MMMM DD, YYYY"}}</h2>
+<h2 class="post-tags">{{tags prefix="" separator=" | "}}</h2>
+{{/post}}
+</div>
+<div class="cover-slide-more">
+<h4>继续阅读</h4>
+<div class="story-cover-arrow shining"></div>
+</div>
+</div>
+	<main class="content single-post" role="main">
+
+	<article class="{{post_class}}">
+
+{{#post}}
+
+<section class="post-content">
+<div class="single-post-inner">
+{{content}}
+</div>
+<section class="share">
+	<!--打赏-->
+	<center><img id="donate_img" src="http://terrynie.com/images/before_donate.png" width="75px" height="75px" onclick="javascript:donate();" onmouseover="javascript:mouse_over()" onmouseout="javascript:mouse_Out()"></center>
+        <div id="light" class="white_content">
+            <div style="width:100%;">
+			<center><h3>感谢您的支持！</h3></center>
+			<center>
+                <div id="image">
+                    <img src="http://terrynie.com/images/alipay10.png"  width="200px" height="200px">
+                    <center>支付宝￥10</center>
+                </div>
+                <div id="image">
+                    <img src="http://terrynie.com/images/alipay20.png"  width="200px" height="200px">
+                    <center>支付宝￥20</center>
+                </div>
+                <div id="image">
+                    <img src="http://terrynie.com/images/alipay.png"  width="200px" height="200px">
+                    <center>支付宝任意</center>
+                </div>
+                <br>
+                <div id="image">
+                    <img src="http://terrynie.com/images/wechat10.png"  width="200px" height="200px">
+                    <center>微信￥10</center>
+                </div>
+                <div id="image">
+                    <img src="http://terrynie.com/images/wechat20.png"  width="200px" height="200px">
+                    <center>微信￥20</center>
+                </div>
+                <div id="image">
+                    <img src="http://terrynie.com/images/wechat.png"  width="200px" height="200px">
+                    <center>微信任意</center>
+                </div>
+            </center>
+            </div>
+            <div style="width:100%">
+			     <a href="javascript:(0);" onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'" style="margin-left:50%;">关闭</a>
+            </div>
+            
+            
+		</div> 
+        <div id="fade" class="black_overlay">
+		
+		</div> 
+        <!--实现窗口滑动-->
+        <script type="text/javascript"> 
+          
+            var name = "#light"; 
+            var backname = "#fade";
+            var menuYloc = null; 
+            var backYloc = null;
+            $(document).ready(function() { 
+                menuYloc = parseInt($(name).css("top").substring(0, $(name).css("top").indexOf("px"))) ;
+                backYloc = parseInt($(backname).css("top").substring(0, $(backname).css("top").indexOf("px")));
+                $(window).scroll(function() { 
+                    offset = menuYloc + $(document).scrollTop() + "px"; 
+                    offset1 = backYloc + $(document).scrollTop() + "px";
+                    $(name).animate({ top: offset }, { duration: 1000, queue: false }); 
+                    $(backname).animate({top: offset1 }, { duration: 1, queue: false})
+                }); 
+            }); 
+        
+        </script> 
+        
+	<h4>分享一下</h4>
+	<div class="share-icons">
+		<a class="icon-share" href="http://service.weibo.com/share/share.php?url={{url absolute="true"}}&title={{encode title}}" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+			<span class=""><i class="iconfont icon-weibo">&#x3432;</i></span>
+		</a>
+
+		<a class="icon-share" href=" http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?desc={{encode title}}&url={{url absolute="true"}}" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+			<span class=""><i class="iconfont icon-qzone">&#xe60d;</i></span>
+		</a>
+		<a class="icon-share" href="http://twitter.com/share?text={{encode title}}&url={{url absolute="true"}}" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+			<span class=""><i class="iconfont  icon-twitter">&#xe763;</i></span>
+		</a>
+		<a class="icon-share" href="https://www.facebook.com/sharer/sharer.php?u={{url absolute="true"}}" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+			<span class=""><i class="iconfont  icon-facebook">&#x3433;</i></span>
+		</a>
+		<a class="icon-share icon-weibo" href="https://plus.google.com/share?url={{url absolute="true"}}" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+			<span class=""><i class="iconfont  icon-weixin">&#x3436;</i></span>
+		</a>
+	</div>
+</section>
+<img id="imgSinaShare" class="img_sina_share" title="将选中内容分享到新浪微博" src="http://simg.sinajs.cn/blog7style/images/common/share.gif" />
+
+
+
+<section class="author">
+{{#if author.image}}
+<a href="{{author.website}}" class="post-author-avatar">
+<img src="{{author.image}}" alt="{{author.name}}">
+</a>
+{{/if}}
+
+<h4><a href="http://terrynie.com">{{author.name}}</a></h4>
+<p>{{author.bio}}</p>
+</section>
+
+</section>
+
+<section class="comment-area">
+<div class="ds-thread"></div>
+</section>
+
+<div id="uyan_frame"></div>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2028378"></script>
+<!-- UY END -->
+
+<footer class="post-footer">
+
+
+
+</footer>
+
+{{/post}}
+
+</article>
+
+</main>
+
+
